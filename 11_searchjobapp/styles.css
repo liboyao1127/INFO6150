@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header, footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #f3f3f3;
+}
+
+main {
+    padding: 1em;
+    max-width: 600px;
+    margin: auto;
+}
+
+input[type="text"] {
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+button {
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+#results {
+    margin-top: 1em;
+}
