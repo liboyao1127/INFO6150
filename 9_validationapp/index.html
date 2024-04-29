@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="password"] {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="checkbox"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .accepted {
+            color: green;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="registration-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required minlength="3">
+        <div class="error" id="name-error"></div>
+
+        <label for="year-of-birth">Year of Birth:</label>
+        <input type="number" id="year-of-birth" name="year-of-birth" required min="1901" max="2099">
+        <div class="error" id="year-of-birth-error"></div>
+
+        <label><input type="checkbox" id="us-resident" name="us-resident"> Do you live in the United States?</label>
+
+        <div id="zipcode-field" style="display: none;">
+            <label for="zipcode">Zipcode:</label>
+            <input type="number" id="zipcode" name="zipcode" minlength="5" maxlength="5">
+            <div class="error" id="zipcode-error"></div>
+        </div>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required minlength="8">
+        <div class="error" id="password-error"></div>
+
+        <label for="pizza-type">Preferred Type of Pizza:</label>
+        <select id="pizza-type" name="pizza-type" required>
+            <option value="">Select...</option>
+            <option value="with-pineapple">With pineapple</option>
+            <option value="without-pineapple">Without pineapple</option>
+            <option value="no-pizza">I do not like pizza</option>
+        </select>
+        <div class="error" id="pizza-type-error"></div>
+
+        <input type="submit" value="Submit">
+        <div class="accepted" id="accepted-message" style="display: none;">Accepted! You'll receive your pizza soon.</div>
+    </form>
+
+    <script>
+        const form = document.getElementById('registration-form');
+        const usResidentCheckbox = document.getElementById('us-resident');
+        const zipcodeField = document.getElementById('zipcode-field');
+
+        usResidentCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                zipcodeField.style.display = 'block';
+            } else {
+                zipcodeField.style.display = 'none';
+            }
+        });
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const yearOfBirth = document.getElementById('year-of-birth').value;
+            const zipcode = document.getElementById('zipcode').value;
+            const password = document.getElementById('password').value;
+            const pizzaType = document.getElementById('pizza-type').value;
+
+            let isValid = true;
+
+            if (name.length < 3) {
+                document.getElementById('name-error').textContent = 'Name must be at least 3 characters';
+                isValid = false;
+            } else {
+                document.getElementById('name-error').textContent = '';
+            }
+
+            if (yearOfBirth < 1901 || yearOfBirth > 2099) {
+                document.getElementById('year-of-birth-error').textContent = 'Invalid year of birth';
+                isValid = false;
+            } else {
+                document.getElementById('year-of-birth-error').textContent = '';
+            }
+
+            if (usResidentCheckbox.checked && (zipcode.length !== 5 || isNaN(zipcode))) {
+                document.getElementById('zipcode-error').textContent = 'Invalid zipcode';
+                isValid = false;
+            } else {
+                document.getElementById('zipcode-error').textContent = '';
+            }
+
+            if (password.length < 8) {
+                document.getElementById('password-error').textContent = 'Password must be at least 8 characters';
+                isValid = false;
+            } else {
+                document.getElementById('password-error').textContent = '';
+            }
+
+            if (!pizzaType) {
+                document.getElementById('pizza-type-error').textContent = 'Please select a pizza type';
+                isValid = false;
+            } else {
+                document.getElementById('pizza-type-error').textContent = '';
+            }
+
+            if (isValid) {
+                document.getElementById('accepted-message').style.display = 'block';
+                form.reset();
+                // You can send the form data to the server here
+            } else {
+                document.getElementById('accepted-message').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
