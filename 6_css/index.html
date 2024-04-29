@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vallejo Public Library</title>
+    <link rel="stylesheet" href="global-styles.css">
+</head>
+<body>
+    <header>
+        <h1>Vallejo Public Library</h1>
+        <div id="search">
+            <input type="text" placeholder="Search books...">
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">Books Catalog</a></li>
+            <li><a href="apply.html">Library Card & Reservation</a></li>
+            <li><a href="account.html">My Account</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="latest-news">
+            <h2>Latest News</h2>
+            <div class="news-item">
+                <img src="newsImage.png" alt="Library Opening">
+                <p>New extended hours starting next month!</p>
+            </div>
+        </section>
+        <section id="library-info">
+            <h2>Library Services</h2>
+            <button onclick="window.location.href='apply.html';">Apply for a Library Card</button>
+            <p>Join our community and explore the joys of reading and learning.</p>
+        </section>
+        <section id="recommended-books">
+            <h2>Recommended Books</h2>
+            <!-- Sample book item -->
+            <div class="book-item">
+                <img src="cover.jpg" alt="Book Title">
+                <div class="book-info">
+                    <h3>Book Title</h3>
+                    <p>Short description of the book.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Open Hours: Weekdays 8:00 - 20:00 | Weekends 9:00 - 18:00</p>
+        <p>Location: 1234 Book Rd, Vallejo, CA | Contact: info@vallejolibrary.org</p>
+    </footer>
+</body>
+</html>
