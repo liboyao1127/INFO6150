@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 8 assignment</title>
+    <style>
+        ul {
+            list-style: none;
+            margin: 20px;
+            padding: 0;
+        }
+
+        li {
+            padding: 6px;
+            border: 1px solid #eee;
+            border-color: aquamarine;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        li:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Some geography data</h1>
+    <main id="geography">
+        <!-- Insert HTML here. It has to be created dynamically from GEOGRAPHY_LIST in script.js -->
+    </main>
+    <script>
+        // Define your GEOGRAPHY_LIST array
+        const GEOGRAPHY_LIST = ["Asia", "Europe", "Africa", "North America", "South America", "Australia", "Antarctica"];
+
+        // Get the main element
+        const geographyMain = document.getElementById("geography");
+
+        // Create ul element
+        const ul = document.createElement("ul");
+
+        // Iterate through GEOGRAPHY_LIST and create li elements
+        GEOGRAPHY_LIST.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            ul.appendChild(li);
+        });
+
+        // Append ul to main element
+        geographyMain.appendChild(ul);
+    </script>
+</body>
+</html>
